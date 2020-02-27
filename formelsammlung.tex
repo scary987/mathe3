@@ -105,21 +105,24 @@ $\mathbb{E}(X)^2=n^2 p^2+np(1-p)$
 Approximation bei großem n und kleinem p durch Poisson 
 \subsection{Hypergeometrisch}
 $f(k):= \frac{\binom{r}{k}\binom{s}{n-k}}{\binom{r+s}{n}}$\\
-$\mathbb{E}(X)=\frac{nr}{r+s}$
-Approximation für sehr großes n: $\binom{n}{k}p^k(1-p)^{n-k}=Binomial(n,p)(\set{k})$
+$\mathbb{E}(X)=\frac{nr}{r+s}$\\
+Approximation für sehr großes n$\rightarrow\infty$	: $\binom{n}{k}p^k(1-p)^{n-k}=Binomial(n,p)(\set{k})$
 \subsection{Poisson}
 Erhöhung der Versuche auf unendlich(Erfolge bleiben gleich)
 $\lim_{n \rightarrow \infty} \binom{n}{k}p^k(1-p)^{n-k} = \frac{1}{k!}\lambda^k e^{-\lambda} $\\
-$\mathbb{E}(X)=\delta$
+$\mathbb{E}(X)=\delta$\\
+$\mathbb{E^2}(X^2)=\lambda^2+ \lambda$
 \subsection{Geometrisch}
 Wiederholung desselben Versuches bis Erfolg (k Stufen)\\
 $\Omega$\set{0,1}$^k$\\
 $f(k):=(1-p)^{k-1}p$\\
-$\mathbb{E}(X)=\frac{1}{p}$
+$\mathbb{E}(X)=\frac{1}{p}$\\
+$\mathbb{E}(X^2)=\frac{1}{p^2}$
 \subsection{Gleichverteilung}$f(x)=\frac{1}{b-a}\mathbf{1}_{(a,b)}(x)$, $ \infty <a<b<\infty$
 \subsection{Exponentialverteilung}
-$f(x):=\delta e^{-\delta x} \mathbf{1}_{(0,\infty)(x)}, \delta >0$
-$\mathbb{E}(X)=\frac{1}{\delta}$
+$f(x):=\lambda e^{-\lambda x} \mathbf{1}_{(0,\infty)(x)}, \lambda >0$\\
+$\mathbb{E}(X)=\frac{1}{\frac{1}{\lambda}}$\\
+$\mathbb{E}(X^2)=\frac{1}{\lambda^2}+\frac{1}{\lambda}$
 \subsection{Normalverteilung}
 $f(x)=\frac{1}{ \sqrt{2 \pi \sigma^2} } e^{-(x-\mu)^2 /2\sigma^2}, \mu \in \mathbb{R}, \sigma \in(0,\infty)$\\
 $\mathbb{E}(X)=\mu$
@@ -157,7 +160,7 @@ Kovarianz postiv $\rightarrow$ postive Korrelation \\
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{Rechenregelncovarianz}
+	\includegraphics[width=0.5\linewidth]{Rechenregelncovarianz}
 	\label{fig:rechenregelncovarianz}
 \end{figure}
 
@@ -168,11 +171,22 @@ $\operatorname{P}\left(|R_n - p| \geq \varepsilon \right) \leq \frac{\sigma^2}{\
 $\rightarrow \forall \epsilon>0 \lim_{n \to \infty} \operatorname{P}\left(|R_n - p| \geq \varepsilon \right) = 0$
 \subsection{starke}
 $\operatorname{P}\left(\limsup_{n\rightarrow\infty}|\overline{X}_n|=0\right)=1$
+\subsection{zentraler Grenzwert}
+$\frac{S_n-n\mu}{\sqrt{n \sigma^2}} \underrightarrow{d} Z $
 \section{Approximation}
 Sei $S_n$ die Summe einer n-stelligen Reihe mit unabhängigen Zufallsgrößen, $\mu$ Erwartungswert, $\sigma^2$ Varianz
 normal-aproximierbar mit  (gut bei n über 30) 
-$\int_{\frac{a-n\mu}{\sqrt{n\sigma^2}}}^{\frac{b-n\mu}{\sqrt{n\sigma^2}}}$
-Normalapproximation der Binomialverteilung
+$\int_{\frac{a-n\mu}{\sqrt{n\sigma^2}}}^{\frac{b-n\mu}{\sqrt{n\sigma^2}}}$\\
+Normalapproximation der Binomialverteilung: $P(a \leq S_n \leq b) \approx \int_{\frac{a-np}{\sqrt{npq}}}^{\frac{b-np}{\sqrt{npq}}} \varphi (x) dx = \phi(\frac{b-np}{\sqrt{npq}}) - \phi(\frac{a-np}{\sqrt{npq}}), q:=1-p $
+
 \section{Statistik}
-Maximum-Likehood-Schätzer Standartmodell
+Produktdichte: $f_\varphi(x):=\prod_{i=1}^{n}\tilde{f}_\varphi(x_i)$\\
+Zähldichte:\\
+$f_\varphi(x):=$$\binom{n}{k}p^k(1-p)^{n-k}\rightarrow L_k(p)=\binom{n}{k}p^k(1-p)^{n-k}$, k ist Beobachtungswert
+
+Maximum-Likehood-Schätzer: Nimm die größte Likelihoodfunktion \\ 
+Likelihood-Funktion: \\ $L_x(\mu)(\vartheta_{ML}(x))=\max_{\vartheta \in \Theta}L_x(\vartheta)$:\\
+$f_\mu(x)\rightarrow max$\\
+Log-Likelihood: lx($\mu$)=$log L_x(\mu)$, hat dieseelben Maxima und Minima wie die Likehood-funktion
+
 \end{document}
