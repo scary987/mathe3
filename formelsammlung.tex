@@ -1,5 +1,5 @@
 \documentclass[]{article}
-\usepackage{pdfpages,amsmath, amssymb}
+\usepackage{pdfpages,amsmath, amssymb, hyperref}
 %opening
 \title{Formelsammlung Lineare Optimierung \& Stochhastik}
 \author{Tobias Reincke}
@@ -15,13 +15,21 @@
 
 \newcommand{\set}[1]{$\{$#1$\}$  }
 \includepdf[pages=3, scale=1]{MFETI3.pdf}\includepdf[pages=6, scale=1]{MFETI3.pdf}
-
+\section{Lineare Rekursionsgleichungen}
+Derangementzahl: $D_n =(n-1)\cdot(D_{(n-1)}+D_{(n-2)})  \forall n \geq 2\\
+D_n=nD_{n-1}+(-1)^n \forall n\geq 1\\ D_0:=1$\\
 Charakteristische Gleichung: $p(\lambda)=a_k \lambda^k + a_{k-1} \lambda^{k-1} + a_{k-2} \lambda^{k-2}+ ... + a_0=0$ \\
-$c_1 y_n^{ (1) }+c_2 y_n^{(2)}+c_3 y_n^{(3)}+...+c_k y_n^{(k)}$ $\rightarrow$ c ausrechnen
+$c_1 y_n^{ (1) }+c_2 y_n^{(2)}+c_3 y_n^{(3)}+...+c_k y_n^{(k)}$ $\rightarrow$ c ausrechnen 
+\subsection{inhomogene}
+Störfunktion der Form: $\sum_{k=1}^{n} x_kf_{k}=y$\\
+$f_{partikular,n}= c_{n+2}*n^k+\cdots+c_{0}$, $k$ der Grad der Störfunktion (normalerweise 1 oder 2)\\
+$\rightarrow$die Partikularformeln mit dem entsprechenden n in der Störfunktion einfügen.\\
+\url{https://de.wikipedia.org/wiki/Lineare_Differenzengleichung#Beispiel_2}
+$\rightarrow$ nach den Konstanten auflösen.
 Anzahl aller surjektiven Abbildungen von A (n) auf B (k) \\ \centering
 $\sum_{i=0}^{k} (-1)^i  \binom{n}{k} (k-i)^n$
 \\
-\section{}
+
 \section{Körper und Strukturen}
 R reflexiv: $\forall$ a aRa \\
 R symmetrisch: $\forall$ a,b $\in$ A   aRb $\Rightarrow$ bRa \\
@@ -32,19 +40,7 @@ Stirling-Zahlen 2. Art (Anzahl der n-elemtigen Mengen in k Klassen):
 $S_{0,0}=1 , S_{n,0}=S_{0,k}=0, n,k \neq 0$
 $S_{n,k} = S_{n-1,k-1} + kS_{n-1,k}  $ f\"ur n,k $\geq$ 1 
 $S_{n,k}= \frac{1}{k!} \sum_{i=0}^k (-1)^i \binom{k}{i} (k-1)^n$
-\subsection{Zahlentheorie} 
-jede Zahl lässt sich in endlich viele Primfaktoren zerlegen\\
-ggT (a,b ) = ggT(b, a-qb )=ggT(b, a mod b) $\forall$ (a,b) $\neq$ (0,0)
-$\exists$ $\alpha$, $\beta$ ggTa,b) = $\alpha$a + $\beta$b
-$\rightarrow$ erweiterter euklidischer algorithmus
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-	\hline
-a & b  &  q                                           &$\alpha_0$ (init: 1 ) &$\alpha_1$ (init: 0)  &$\beta_0$ (init: 1) &$\beta_1$ (init: 0) & alt   \\
-	\hline                        
-b	& a mod b & $\lfloor$a/b$\rfloor$  & $\alpha_1$ &$\alpha_0$ - $q_{neu}$$\alpha_1$    & $\beta_1$ &$\beta_0$ - $q_{neu}$$\beta_1$  & neu (ohne $_{neu}$ sind die alten)\\
-	\hline
-\end{tabular}
-Ausgabe: a, $\alpha_0$, $\beta_0$ \\
+
 \subsection{Halb- und Gruppen}
 (H,$\odot$) ist Halbgruppe: $\Leftrightarrow$ $\forall a,b,c \in H: a \odot (b \odot c) = (a \odot b) \odot c $ \\
 abelsch: $\Leftrightarrow$ $\forall$ a,b $\in$ H: a $\odot$ b = b $\odot$ a \\
@@ -74,10 +70,59 @@ E: m:= $\phi$(n) =(p-1)*(q-1), ermitteln g teilerfremd m, 1$<$g$<$m, wählt kg =
 E: sendet k und n
 A: sendet e = a$^k$ mod n
 B: a := e$^g$ mod n 
-
+\subsection{Zahlentheorie \& Erweiterter Euklid} 
+jede Zahl lässt sich in endlich viele Primfaktoren zerlegen\\
+ggT (a,b ) = ggT(b, a-qb )=ggT(b, a mod b) $\forall$ (a,b) $\neq$ (0,0)
+$\exists$ $\alpha$, $\beta$ ggTa,b) = $\alpha$a + $\beta$b ($\alpha$ und $\beta$ können auch 0 annehmen für 1 inverses)
+$\rightarrow$ erweiterter euklidischer algorithmus
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+	\hline
+	a & b  &  q                                           &$\alpha_0$ (init: 1 ) &$\alpha_1$ (init: 0)  &$\beta_0$ (init: 0) &$\beta_1$ (init: 1) & alt   \\
+	\hline                        
+	b	& a mod b & $\lfloor$a/b$\rfloor$  & $\alpha_1$ &$\alpha_0$ - $q_{neu}$$\alpha_1$    & $\beta_1$ &$\beta_0$ - $q_{neu}$$\beta_1$  & neu (ohne $_{neu}$ sind die alten)\\
+	\hline
+\end{tabular}
+Ausgabe: a, $\alpha_0$, $\beta_0$ \\
+\newpage
 \section{Lineare Optimierung}
-Merke: Normalumformung, Basisberechnung via Gauß (or other means), Simplexalgorithmus 
+\subsection{Simplextabelle}
+$\begin{array}{|c|c|c|}
+\hline
+&  & NB \\
+\hline
+& w & g^T \\
+\hline
+B  & s & R\\
+\hline
+\end{array}
+$
+\\
+B:=Basisvariablen (Berechnung über Gauß)\\
+NB:=Nichtbasisvariablen\\
+R:= Die Matrix über NB \\
+s:=Lösungsvektor\\
+$x_B$:=Vektor von Basisvariablen:=s-$Rx_{NB}$\\ (in Zielfunktion einsetzen)\\
+ZF:=w -$\mathbf{g}^T\mathbf{x}_{NB}->max$
 
+\subsection{Simplex Algorithmus + Regel von Bland}
+Gegeben: Gefüllte Simplextabelle.\\
+Iteration:\\
+1. Finde ein $ l $ mit $ g_l < 0 $. Gibt es ein solches $ l $ nicht, so ist die optimale
+Lösung aus der aktuellen Simplextabelle ablesbar, STOP.\\Das dazugehörige $ \gamma_l $ muss minimal sein.\\
+2. Finde ein $ k $ mit $ r_{k_l} >0 $ und $ \frac{s_k}{r_{l_k}}  =\min\{\frac{s_i}{r_{i_l}} :i\in [m],r_{i_l} >0\} $.Gibt es ein solches k nicht, so ist die Zielfunktion unbeschränkt, STOP. \\Das dazugehörige $ \beta_k $ muss minimal sein.\\
+3. Führe den Austausch gemäß Satz 4.4.3 durch.\\
+\subsection*{Satz 4.4.3}
+Tausche $ \beta_k \leftrightarrow \gamma_l $.\\Die restliche Tabelle ergibt sich wie folgt:\\
+\begin{enumerate}
+	\item $ w'=r'_{0_0} $
+	\item $ \mathbf{g'^{\,T}} =\begin{pmatrix}r'_{0_1} & \dots & r'_{0_m}\end{pmatrix} $
+	\item $ \mathbf{s'}=\begin{pmatrix}r'_{1_0}\\\vdots\\r'_{n_0}\end{pmatrix} $
+	\item 	$ r'_{i_j}=\left\{\begin{array}{lc|c|}\frac1{r_{i_j}}&falls\;i=k,j=l &\text{1/Pivotelement}\\
+	\frac{r_{i_j}}{r_{k_l}}&falls\;i=k,j=0\;...\;n\neq l&\text{Spalte des Pivotelements durch Pivotelement}\\
+	-\frac{r_{i_l}}{r_{k_l}}&falls\;i=0\;...\;m\neq k,j=l&\text{Negation der Zeile durch Pivotelement}\\
+	r_{i_j}-\frac{r_{i_l}\cdot r_{k_j}}{r_{k_l}}&falls\;i=0\;...\;m\neq k,j=0\;...\;n\neq l&\text{Element Pivotzeile * Pivotspalte / Pivotelement}\end{array}\right. $
+\end{enumerate}
+\newpage
 \section{Grundefinitionen Stochastik}
 $\Omega$ Ereignismenge
 f($\omega$) ,$\omega$ $\in$ $\Omega$ Wahrscheinlichkeiten
