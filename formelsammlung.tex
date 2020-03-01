@@ -175,9 +175,14 @@ $\mathbb{E}(X^2)=\frac{1}{\lambda^2}+\frac{1}{\lambda}$
 \subsection{Normalverteilung}
 $f(x)=\frac{1}{ \sqrt{2 \pi \sigma^2} } e^{-(x-\mu)^2 /2\sigma^2}, \mu \in \mathbb{R}, \sigma \in(0,\infty)$\\
 $\mathbb{E}(X)=\mu$
+\subsection{Betaverteilung}
+Summe aller Binomialverteilungen bis k\\
+$\sum_{i=0}^k \binom{n}{i} \cdot p^i \cdot (1-p)^{n-i} $
 \subsection{stetiges Wahrscheinlichkeitsmaß}
-f(x), stetig W.dichte
-$\mathbb{P}(I)=\int_I f(x)dx=\mathbb{P}([a,b]=F(b)-F(a)) =\int \int f_{(X,Y)}(x,y)\ dy\ dx$
+f(x), stetig W.dichte: \\
+$\mathbb{P}(I)=\int_I f(x)dx=\mathbb{P}([a,b]=F(b)-F(a)) =\int \int f_{(X,Y)}(x,y)\ 
+dy\ dx$ \\
+Verteilungsfunktion: $F_X(x)=P(X\leq x)=\int_{-\infty}^x f(x) dx$
 \section{Bedingte Wahrscheinlichkeit}
 $\mathbb{P}(A|B):=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$\\
 Unabhängigkeit:$\mathbb{P}(A|B)=\mathbb{P} \Leftrightarrow \mathbb{P}(A \cap B)=\mathbb{P}(A) \cdot \mathbb{P}(B)$ 
